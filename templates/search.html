@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %} 
+<h1 align='center' class='mt-5 pt-5'> Showing the results of your search 
+  : {{search}} </h1>
+<hr />
+
+ <div class="product mt-5 d-flex flex-wrap">
+  {% if search_items %}   
+   {% for i in search_items %}
+   <div class="card ms-5 mt-5 m e-2" style="width: 18rem">
+     <img
+       src="/media/{{i.image}}"
+       class="card-img-top object-fit-cover"
+       style="height: 15rem"
+       alt="..."
+     />
+     <div class="card-body">
+       <h5 class="card-title">{{i.p_name}}</h5>
+       <small class="card-text text-danger">{{i.barnd}}</small>
+       <p class="card-text">
+         {{i.discounted_price}}
+         <small class="text-decoration-line-through">
+           {{i.selling_price}}
+         </small>
+       </p>
+       <p class="card-text">{{ i.discription |truncatewords:10 }}</p>
+
+       <form class="d-inline" action="{% url "addCart" %}" method="get">
+        <input type="hidden" value="{{i.id}}" name="pro_id">
+        <button class="btn btn-light" type="submit">Add to Cart</button>
+      </form>
+       <a href="#" class="btn btn-primary"> Buy </a>
+       
+     </div>
+   </div>
+
+   {% endfor %}
+   {% else %}
+      <h1> not found</h1>   
+
+   {% endif %}
+ </div>
+</div>
+
+{% endblock content %} 
+
+
+
+
+ 

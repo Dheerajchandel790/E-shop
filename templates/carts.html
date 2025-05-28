@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <section class="cart mt-5">
+        <div class="cart-header text-dark text-center">
+            <h1 align='center' class='mt-5 pt-2'> My Wish List </h1><hr />
+        </div>
+
+
+        {% for cart in items %}
+            
+        <div class="row my-2 mx-5 rounded-3 p-3 border border-success border-2">
+
+            <div class="col-md-8 my-2">
+                <div class="cart-item d-flex gap-3">
+                    <img id="cart_img" src="/media/{{cart.product.image}}" class="cart-img rounded img-fluid" alt="" 
+                    style=" width :10vw; height:20vh">
+                    <div class="cart-info">
+                    </div>
+                </div>
+                <h5>{{cart.product.p_name}}</h5>
+            </div>
+
+            <div class="col-md-4 quantity-controler d-flex justify-content-center align-items-center gap-4">
+                <p>${{ cart.product.discounted_price}}</p>
+                <a href="{% url 'remove' cart.id %}" class ="btn btn-danger"> Remove </a> 
+            </div>
+        </div>
+        {% endfor %}
+
+
+        <div class="cart-summary text-dark p-5 m-5 bg-light rounded-4">
+            <h4 class="text-center">Summary</h4>
+            <p>Total items: <span class="text-success fw-bold">{{ cartitems}}</span></p>
+            <p>Total price: <span class="text-success fw-bold">${{total}}</span></p>
+        </div>
+
+    </section>
+
+{% endblock content %}

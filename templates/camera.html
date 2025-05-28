@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 align='center' class='mt-5 pt-5'> Camera </h1>
+<hr />
+<a class="dropdown-toggle ms-2 p-2 text-decoration-none text-dark border border-sloid-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+  Filter By Brand 
+</a>
+<ul class="dropdown-menu ms-2 p-2">
+  <li><a href="{% url "camera" 'all' %}" class='text-decoration-none text-dark' >  All </a> </li>
+  <li><a href="{% url "camera" 'Nikon' %}" class='text-decoration-none text-dark' > Nikon </a> </li>
+  <li><a href="{% url "camera" 'Sony' %}" class='text-decoration-none text-dark' > Sony </a> </li>
+</ul>
+
+
+ 
+
+  <div class="product d-flex flex-wrap" > 
+    {% for i in camera %}
+    <div id="cart1" class="card ms-5 mt-5 m e-2" style="width: 18rem">
+      <img
+        src="/media/{{i.image}}"
+        class="card-img-top object-fit-cover"
+        style="height: 15rem"
+        alt="..."
+      />
+      <div class="card-body">
+        <h5 class="card-title">{{i.p_name}}</h5>
+        <small class="card-text text-danger">{{i.barnd}}</small>
+        <p class="card-text">
+          {{i.discounted_price}}
+          <small class="text-decoration-line-through">
+            {{i.selling_price}}
+          </small>
+        </p>
+        <p class="card-text">{{ i.discription |truncatewords:10 }}</p>
+        <form class="d-inline" action="{% url "addCart" %}" method="get">
+          <input type="hidden" value="{{i.id}}" name="pro_id">
+          <button class="btn btn-light" type="submit">Add to Cart</button>
+        </form>
+        <a href="#" class="btn btn-primary"> Buy </a>
+      </div>
+    </div>
+
+    {% endfor %}
+  </div>
+</div>
+
+
+
+
+
+{% endblock content %}
+
+
+

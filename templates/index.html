@@ -1,0 +1,161 @@
+{% extends "base.html" %} 
+{% block content %}
+
+
+<!-- Swiper -->
+<div class="swiper mySwiper swiper-initialized swiper-horizontal swiper-backface-hidden mt-5 pt-3">
+  <div class="swiper-wrapper" id="swiper-wrapper-7f2265e9b667ee0c" aria-live="off" style="transition-duration: 0ms; transform: translate3d(-3228px, 0px, 0px); transition-delay: 0ms;">
+
+  <div class="swiper-slide" id='swp_img'>
+       <img src="\static\img\slider-bg.jpg" alt="" id='swiper_img'   style='height:90vh; width:100vw'> 
+  </div>
+  
+  <div class="swiper-slide">
+       <img src="\static\img\pexels-nurseryart-370472.jpg" alt="" id='swiper_img' style='height:90vh;  width:100vw'  > 
+  </div>
+
+  <div class="swiper-slide">
+       <img src="\static\img\arrival-bg.jpg" alt="" id='swiper_img'  style='height:90vh;  width:100vw' > 
+  </div>
+          
+</div>
+
+
+<!--  start Featured-->
+
+<section class="features mt-5">
+
+  <div class="section-heading ">
+    <h1 class='ms-3 '>Featured Products</h1>
+  </div>
+
+
+    <div class="features-produts mt-3 me-5">
+
+        <div class="owl-carousel owl-theme">
+<!--  cards start-->
+{% for all in camera %}  
+<a href="{% url "details" all.id %}" class="link-dark text-decoration-none">
+
+        <div class="item ms-5 "  >
+              <img src="media/{{ all.image }}" alt="" class="object-fit-cover" style="height:250px;" >
+              <div class="item-text d-flex justify-content-between">
+                <h5> {{all.p_name}} </h5>
+                  <h5> ${{all.selling_price}} </h5>
+              </div>
+          </div>
+      </a>
+
+          {% endfor %}
+
+
+         {% for all in shoes %}  
+        <a href="{% url "details" all.id %}" class="link-dark text-decoration-none">
+
+          <div class="item ms-5" >
+                <img src="media/{{ all.image }}" alt="" class="object-fit-cover" style="height:250px;">
+                <div class="item-text d-flex justify-content-between">
+                  <h5> {{all.p_name}} </h5>
+
+                    <h5> ${{all.selling_price}} </h5>
+                </div>
+            </div>
+        </a>
+            {% endfor %}
+            
+
+          
+
+            
+
+<!--  cards end-->
+
+
+       </div>
+    </div> 
+
+  </section>
+<!--  Featured end-->
+
+
+    <section class="banner text-center"    >
+      <div class="banner-head">
+          <h1>10% OFF Discount</h1>
+          <p>Subscribe to get 10% OFF on All Purchase</p>
+          <button class="btn-success rounded-pill btn px-5">Subscribe us Now</button>
+      </div>
+    </section>
+
+
+
+    {% comment %} card start {% endcomment %}
+    <div class="feature-items">
+
+        <div class="card text-center">
+
+            <div class="card-header">
+              Featured
+            </div>
+
+            <div class="card-body">
+              <h5 class="card-title">Special title treatment</h5>
+              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+              <a href="#" class="btn btn-success">Go somewhere</a>
+             </div>
+
+            <div class="card-footer text-body-secondary">
+              2 days ago
+            </div>
+
+        </div>
+
+        <div class="row ms-5" id="img_main">
+            <div class="col ms-5" id="img2">
+                <img  style='width: 30vw; height: 68vh;' src="/static/img/pexels-raymond-petrik-1448389535-29046927.jpg" alt="" >
+            </div>
+            <div class="col" id="img2">
+                <img src="/static/img/high-heels.png"
+                 style='width: 35vw; height: 68vh;' alt="">
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+<hr>
+
+<section class="features mt-5">
+
+  <div class="section-heading ">
+    <h1 class='ms-3 '>Men's Fashion</h1>
+  </div>
+
+
+    <div class="features-produts mt-3 me-5">
+
+        <div class="owl-carousel owl-theme">
+<!--  cards start-->
+  {% for all in mens %}  
+  <a href="{% url "details" all.id %}" class="link-dark text-decoration-none">
+
+          <div class="item ms-5 "  >
+                <img src="media/{{ all.image }}" alt="" class="object-fit-cover" style="height:250px;" >
+                <div class="item-text d-flex justify-content-between">
+                    <h5> {{all.p_name}} </h5>
+                    <h5> ${{all.selling_price}} </h5>
+                </div>
+            </div>
+        </a>
+
+            {% endfor %}
+<!--  cards end-->
+
+
+       </div>
+    </div> 
+
+  </section>
+
+{% endblock content %}
