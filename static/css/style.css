@@ -29,7 +29,7 @@
   width: 100%;
 }
 
-@media (max-width : 335px ) {
+@media (max-width : 600px ) {
   #bb{
     display: none;
   }
